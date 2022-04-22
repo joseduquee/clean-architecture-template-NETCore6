@@ -19,13 +19,13 @@ namespace CleanArchitecture.Infrastructure
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<StreamerDbContext>(options =>
+            services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("ConnectionString"))
                 );
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
-            services.AddScoped<IVideoRepository, VideoRepository>();
-            services.AddScoped<IStreamerRepository, StreamerRepository>();
+            //services.AddScoped<IVideoRepository, VideoRepository>();
+            //services.AddScoped<IStreamerRepository, StreamerRepository>();
 
             services.Configure<EmailSettings>(c => configuration.GetSection("EmailSettings"));
             services.AddTransient<IEmailService, EmailService>();

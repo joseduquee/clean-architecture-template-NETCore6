@@ -13,9 +13,9 @@ namespace CleanArchitecture.Infrastructure.Repositories
 {
     public class RepositoryBase<T> : IAsyncRepository<T> where T : BaseDomainModel
     {
-        protected readonly StreamerDbContext _context;
+        protected readonly AppDbContext _context;
 
-        public RepositoryBase(StreamerDbContext context)
+        public RepositoryBase(AppDbContext context)
         {
             _context = context;
         }
